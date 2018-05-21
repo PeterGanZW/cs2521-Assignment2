@@ -35,8 +35,8 @@ BSTLink newBSTNode(ItemPQ element)
     return new;
 }
 static
-void BSTreeInsert(BSTree t, ItemPQ element){
-    if (element.value < t->element.value) {
+BSTree BSTreeInsert(BSTree t, ItemPQ element){
+    /*if (element.value < t->element.value) {
         if (t->left != NULL){
             BSTreeInsert(t, element);
         } else {
@@ -48,7 +48,16 @@ void BSTreeInsert(BSTree t, ItemPQ element){
         } else {
             t->right = newBSTNode(element);
         }
-    }
+    }*/
+    if (t == NULL)
+        return newBSTNode(element);
+    else if (element.value < t->element.value)
+        t->left = BSTreeInsert(t->left, element);
+    else if (element.value >= t->element.value)
+        t->right = BSTreeInsert(t->right, element);
+    else // (v == t->value)
+        /* don't insert duplicates */;
+    return t;
 }
 
 PQ newPQ(){
@@ -62,11 +71,7 @@ int PQEmpty(PQ p) {
 }
 
 void addPQ(PQ pq, ItemPQ element) {
-    if (pq->root == NULL){
-        pq->root = newBSTNode(element);
-    } else {
-        BSTreeInsert(pq->root, element);
-    }
+    pq->root = BSTreeInsert(pq->root, element);
 }
 
 //find the parent of smallest node
