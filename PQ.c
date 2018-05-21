@@ -53,10 +53,8 @@ BSTree BSTreeInsert(BSTree t, ItemPQ element){
         return newBSTNode(element);
     else if (element.value < t->element.value)
         t->left = BSTreeInsert(t->left, element);
-    else if (element.value >= t->element.value)
+    else 
         t->right = BSTreeInsert(t->right, element);
-    else // (v == t->value)
-        /* don't insert duplicates */;
     return t;
 }
 
@@ -76,6 +74,8 @@ void addPQ(PQ pq, ItemPQ element) {
 
 //find the parent of smallest node
 static BSTree parentOfSmallest(BSTree t){
+    assert(t!=NULL);
+    if (t->left == NULL) return t;
     if (t->left->left !=NULL)
         return parentOfSmallest(t->left);
     else 
@@ -83,17 +83,29 @@ static BSTree parentOfSmallest(BSTree t){
 }
 
 ItemPQ dequeuePQ(PQ pq) {
+    assert(pq!=NULL);
+    ItemPQ throwAway;
+    throwAway.value = 0;
+    throwAway.key = 0;
+    if (pq->root == NULL) return throwAway;
     BSTNode parent = parentOfSmallest(pq->root);
-    BSTNode child = parent->left;
-    BSTNode grandchild = child->right;
-	ItemPQ throwAway = child->element;
-    free(child);
-    parent->left = grandchild;
+    if (parent->left == NULL){//the smallest is the root
+        throwAway = parent->element;
+        pq->root = parent->right;
+        free(parent);
+        return throwAway;
+    } else {
+        BSTNode child = parent->left;
+        BSTNode grandchild = child->right;
+	    throwAway = child->element;
+        free(child);
+        parent->left = grandchild;
+    }
 	return throwAway;
 }
 
 void updatePQ(PQ pq, ItemPQ element) {
-   /* BSTNode node = findNode(pq->root, element);
+    /*BSTNode node = findNode(pq->root, element);
     if (node == NULL) return;
     node->element*/
 }
