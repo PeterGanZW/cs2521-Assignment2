@@ -1,94 +1,158 @@
-// Graph ADT interface for Ass2 (COMP2521)
-#include <stdio.h>
+// Graph.c ... implementation of Graph ADT
+// Written by Mingfang Jiao
+
 #include <stdlib.h>
+#include <stdio.h>
 #include <assert.h>
+#include <string.h>
 #include "Graph.h"
 
-struct GraphRep{
-    int noNodes;
-    int noEdges;
-    struct _adjListNode** List;
-};
+// graph representation (adjacency List)
+typedef struct GraphRep {
+    adjListNode **edges; // List of weight
+	int    nV;           // #vertices
+	int    nE;           // #edges
+} GraphRep;
 
-void addNode (AdjList list, int i, int weight);
-// vertices are ints
-
-Graph newGraph(int noNodes){
-    Graph graph = malloc(sizeof(struct GraphRep));
-    graph -> noNodes = noNodes;
-    graph -> noEdges = 0;
-    graph -> List = malloc(noNodes*sizeof(adjListNode*));
-
-    for(int i =0; i<noNodes; i++){
-        graph->List[i] = NULL;
-    }
-    return graph;
+// check validity of Vertex
+int validV(Graph g, Vertex v)
+{
+	return (g != NULL && v >= 0 && v < g->nV);
 }
 
-adjListNode* newNode(int v, int weight){
-    adjListNode* new = malloc(sizeof(adjListNode));
-    new->w = v;
-    new->next = NULL;
+AdjList newNode(Vertex dest, int weight){
+    AdjList new = malloc(sizeof(adjListNode));
+    new->w = dest;
     new->weight = weight;
+    new->next = NULL;
     return new;
 }
 
-void insertEdge(Graph g, Vertex src, Vertex dest, int weight){
-    //Add edge from src to dest
-    adjListNode* new = newNode(dest,weight);
-    new->next = g->List[src];
-    g->List[src] = new;
-    g->noEdges++;
+Graph newGraph(int noNodes){
+    int v,w;
+    assert(noNodes > 0);
+	Graph new = malloc(sizeof(GraphRep));
+	assert(new != 0);
+	new->nV = noNodes;
+	new->nE = 0;
+	new->edges = calloc(nV,sizeof(adjListNode *));
+	assert(new->edges != 0);
+	return new;
 }
-void  removeEdge(Graph g, Vertex src, Vertex dest){
-    adjListNode* curr = g->List[src];
-    adjListNode* prev = curr;
-    if (curr->w == dest){
-        g->List[src] = curr->next;
-        g->noEdges--;
-        return;
-    }
-    while(curr!=NULL){
-        if (curr->w == dest){
-            prev->next = curr->next;
-            curr = NULL;
+	
+
+
+void  insertEdge(Graph g, Vertex src, Vertex dest, int weight){
+    assert(g != NULL);
+    assert(validV(g,src));
+    assert(validV(g,dest));
+    int found = 0;
+    AdjList curr = g->edges[src]; 
+    while(curr->next != NULL){
+        if(curr->w == dest){
+            found = 1;
             break;
-        } else {
-            prev = curr;
+        }
+        curr = curr->next;
+    }
+    if(curr->w == dest){
+        found = 1;
+    }
+    if(found == 0){
+        AdjList insert = newNode(dest, weight); // insert edge to g->edges[src]
+        curr->next = insert;
+        insert = newNode(src, weight);          // insert edge to g->edges[dest]
+        curr = g->edges[dest];
+        g->edges[dest] = insert;
+        insert->next = curr;
+    }
+    g->nE++;
+}
+
+void  removeEdge(Graph g, Vertex src, Vertex dest){
+    assert(g != NULL);
+    assert(validV(g,src));
+    assert(validV(g,dest));    
+    AdjList curr = g->edges[src];
+    assert(curr != NULL);
+    if(curr->w == dest){               // delete edge from g->edges[src];
+        g->edges[src] = curr->next;
+        free(curr);
+    }else{
+        AdjList befcurr = g->edges[src];  
+        curr = befcurr->next;  
+        while(curr != NULL){
+            if(curr->w == dest){
+                befcurr->next = curr->next;
+                free(curr);
+                break;
+            }
+            befcurr = befcurr->next;
             curr = curr->next;
         }
     }
-    g->noEdges--;
-}
-bool adjacent(Graph g, Vertex src, Vertex dest){
-    assert(g!=NULL);
-    adjListNode* curr = g->List[src];
-    while(curr!= NULL){
-        if (curr->w == dest) return true;
-        else curr = curr->next;
+    curr = g->edges[dest];
+    assert(curr != NULL);
+    if(curr->w == src){               // delete edge from g->edges[dest];
+        g->edges[dest] = curr->next;
+        free(curr);
+    }else{
+        AdjList befcurr = g->edges[dest];  
+        curr = befcurr->next;  
+        while(curr != NULL){
+            if(curr->w == src){
+                befcurr->next = curr->next;
+                free(curr);
+                break;
+            }
+            befcurr = befcurr->next;
+            curr = curr->next;
+        }
     }
-    return false;
+    g->nE--;
+}        
+            
+            
+
+
+
+bool  adjacent(Graph g, Vertex src, Vertex dest){
+    assert(g != NULL);
+    assert(validV(g,src));
+    assert(validV(g,dest));
+    AdjList curr = g->edges[src];
+    assert(curr != NULL);
+    while(curr != NULL){
+        if(curr->w == dest){
+            return TRUE;
+        }
+        curr = curr->next;
+    }
+    return FALSE;
 }
 
 int  numVerticies(Graph g){
-    return g->noNodes;
+    return g->nV;
 }
+
 
 /*
  * Returns a list of adjacent vertices
  * on outgoing edges from a given vertex.
 **/
 AdjList outIncident(Graph g, Vertex v){
-    if (g->List[v] == NULL) return NULL;
-    adjListNode* curr = g->List[v];
-    adjListNode* newlist = newNode(curr->w,curr->weight); 
-    while(curr->next!= NULL){
-        adjListNode* new = newNode(curr->next->w,curr->next->weight);
-        new -> next = newlist->next;
-        newlist-> next = new;
+    assert(v != NULL);
+    assert(validV(g,v));
+    AdjList outgoing = g->edges[v];
+    AdjList outindex = outgoing;
+    AdjList curr = g->edges[v]->next;
+    while(curr != NULL){
+        AdjList insert = newNode(curr->w,curr->weight);
+        outindex->next = insert;
         curr = curr->next;
+        outindex = outindex->next;
     }
-    return newlist;
+    return outgoing;
 }
 /*
 
@@ -96,60 +160,23 @@ AdjList outIncident(Graph g, Vertex v){
  * on incoming edges from a given vertex.
 **/
 AdjList inIncident(Graph g, Vertex v){
-    adjListNode* newlist = newNode(-1, -1); 
-    for (int i =0; i< v; i++){
-        adjListNode* curr = g->List[i];
-        while(curr!= NULL){
-            if (curr->w == v){
-                addNode(newlist,i,curr->weight);
-            }
-            curr = curr-> next;
-        }
-    }
-    for(int i = v+1; i<g->noNodes; i++){
-        adjListNode* curr = g->List[i];
-        while(curr!= NULL){
-            if (curr->w == v){
-                addNode(newlist,i,curr->weight);
-            }
-            curr = curr-> next;
-        }
-    }
-    return newlist;
+    assert(v != NULL);
+    assert(validV(g,v));
+    AdjList incoming = g->edges[v];
+    AdjList index = incoming;
+    AdjList curr = 
+
+
 }
 
-void addNode (AdjList list, int i, int weight){
-    if (list->w == -1){
-        list -> w = i;
-        return;
-    } 
-    adjListNode* new = newNode(i,weight);
-    adjListNode* next = list-> next;
-    new -> next = next;
-    list -> next = new;
-}
-
-void  showGraph(Graph g){
-    assert(g!= NULL);
-    printf("#vertices=%d, #edges=%d\n\n",numVerticies(g),g->noEdges);
-    for(int i =0; i<g->noNodes; i++){
-        adjListNode* curr = g->List[i];
-        printf("%d ----->", i);
-        while (curr != NULL){
-            printf("%d",curr->w);
-            printf("(weight:%d)",curr->weight);
-            curr = curr->next;
-        }
-        printf("\n");
-    }
-}
+void  showGraph(Graph g);
 void  freeGraph(Graph g){
-    for(int i=0; i<g->noNodes;i++){
-        adjListNode* curr = g->List[i];
-        while (curr!= NULL){
-            adjListNode* prev = curr;
-            curr = curr-> next;
-            free(prev);
+    for(int i = 0; i < nV; i++){
+        AdjList curr = g->adges[i];
+        while(curr != NULL) {
+            AdjList node = curr;
+            curr = curr->next;
+            free(node);
         }
     }
     free(g);
