@@ -35,7 +35,7 @@ BSTLink newBSTNode(ItemPQ element)
     return new;
 }
 static
-BSTree BSTreeInsert(BSTree t, ItemPQ element){
+BSTNode BSTreeInsert(BSTree t, ItemPQ element){
     /*if (element.value < t->element.value) {
         if (t->left != NULL){
             BSTreeInsert(t, element);
@@ -102,29 +102,58 @@ ItemPQ dequeuePQ(PQ pq) {
         parent->left = grandchild;
     }
 	return throwAway;
-}
-BSTNode static minValueNode(BSTree t){
-    if (t->left != NULL){
-        return minValueNode(t->left);
-    } else {
-        return t;
-    }
-}
+}// delete root of tree
 static
-void deleteNode(BSTNode node){
-    // // node with only one child or no child
-    if (node->left == NULL){
-        node = node -> right;
-    } else if (node->right == NULL){
-        node = node -> left;
-    } else {
-    //has two children, get the smallest children in the right tree
-    BSTNode temp = minValueNode(node->right);
-    node->element = temp->element; //replace the current node's element with the succcessor
-    deleteNode(temp);
+BSTree deleteRoot(BSTree t)
+{
+    // if no subtrees, tree empty after delete
+    if (t->left == NULL && t->right == NULL) {
+        free(t);
+        return NULL;
     }
+    // if only right subtree, make it the new root
+    else if (t->left == NULL && t->right != NULL) {
+        free(t);
+        return t->right;
+    }
+    // if only left subtree, make it the new root
+    else if (t->left != NULL && t->right == NULL) {
+        free(t);
+        return t->left;
+    }
+    // else (t->left != NULL && t->right != NULL)
+    // so has two subtrees
+    // - find inorder successor
+    // - move its value to root
+    // - delete inorder successor node
+    BSTLink parent = t;
+    BSTLink succ = t->right; // not null!
+    while (succ->left != NULL) {
+        parent = succ;
+        succ = succ->left;
+    }
+    t->element = succ->element;
+    free(succ);
+    if (parent == t)
+        parent->right = NULL;
+    else
+        parent->left = NULL;
+    return t;
 }
 
+// delete a value from a BSTree
+static BSTree BSTreeDelete(BSTree t,ItemPQ element)
+{
+    if (t == NULL)
+        return NULL;
+    else if (element.value < t->element.value)
+        t->left = BSTreeDelete(t->left, element);
+    else if (element.value > t->element.value)
+        t->right = BSTreeDelete(t->right, element);
+    else // (v == t->value)
+        t = deleteRoot(t);
+    return t;
+}
 //given a key, find the node inside the tree.
 static BSTNode findNode(BSTree t, int key) {
     if (t!= NULL){
@@ -143,11 +172,11 @@ static BSTNode findNode(BSTree t, int key) {
 }
 void updatePQ(PQ pq, ItemPQ element) {
     BSTNode node = findNode(pq->root, element.key);//traverse all nodes to find the key.
-    printf("THE NODE HAS BEEN FOUNDkey: %d, value:%d\n", node->element.key, node->element.value);
+    //printf("THE NODE HAS BEEN FOUND key: %d, value:%d\n", node->element.key, node->element.value);
     //remove the node
-    deleteNode(node);
+    pq->root = BSTreeDelete(pq->root,node->element);
     //reinsert the new element into tree.
-    BSTreeInsert(pq->root, element);
+    pq->root = BSTreeInsert(pq->root, element);
 }
 
 

@@ -21,9 +21,10 @@ int main(){
   addPQ(pq, b);
   addPQ(pq, c);
   addPQ(pq, d);
-  showPQ(pq);
   a = makeNewItem(1, 10);
   updatePQ(pq,a);
+  b = makeNewItem(1, 1);
+  updatePQ(pq,b);
   showPQ(pq);
   return EXIT_SUCCESS;
 }
