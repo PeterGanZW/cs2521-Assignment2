@@ -103,14 +103,56 @@ ItemPQ dequeuePQ(PQ pq) {
     }
 	return throwAway;
 }
-
-void updatePQ(PQ pq, ItemPQ element) {
-    /*BSTNode node = findNode(pq->root, element);
-    if (node == NULL) return;
-    node->element*/
+BSTNode static minValueNode(BSTree t){
+    if (t->left != NULL){
+        return minValueNode(t->left);
+    } else {
+        return t;
+    }
+}
+static
+void deleteNode(BSTNode node){
+    // // node with only one child or no child
+    if (node->left == NULL){
+        node = node -> right;
+    } else if (node->right == NULL){
+        node = node -> left;
+    } else {
+    //has two children, get the smallest children in the right tree
+    BSTNode temp = minValueNode(node->right);
+    node->element = temp->element; //replace the current node's element with the succcessor
+    deleteNode(temp);
+    }
 }
 
-BSTNode findNode(BSTree t, ItemPQ element){
+//given a key, find the node inside the tree.
+static BSTNode findNode(BSTree t, int key) {
+    if (t!= NULL){
+        if (t->element.key == key){
+            return t;
+        } else {
+            BSTNode foundNode = findNode(t->left, key);
+            if (foundNode == NULL){
+                foundNode = findNode(t->right, key);
+            }
+            return foundNode;
+        }
+    } else {
+        return NULL;
+    }
+}
+void updatePQ(PQ pq, ItemPQ element) {
+    BSTNode node = findNode(pq->root, element.key);//traverse all nodes to find the key.
+    printf("THE NODE HAS BEEN FOUNDkey: %d, value:%d\n", node->element.key, node->element.value);
+    //remove the node
+    deleteNode(node);
+    //reinsert the new element into tree.
+    BSTreeInsert(pq->root, element);
+}
+
+
+
+/*BSTNode findNode(BSTree t, ItemPQ element){
     if (t==NULL) return NULL;
     if (t->element.key == element.key){
         return t;
@@ -119,7 +161,7 @@ BSTNode findNode(BSTree t, ItemPQ element){
     } else {
         return findNode(t->right,element);
     }
-}
+}*/
 
 void printBSTree(BSTree t){
     if (t!= NULL){
