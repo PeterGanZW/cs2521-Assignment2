@@ -38,29 +38,45 @@ typedef struct ShortestPaths {
   } 
 }
 */
+
+static int isInList(PredNode* head, int i){
+  PredNode* tmp = head;
+  while (tmp!=NULL){
+    if (tmp->v == i) return 1;
+    tmp = tmp->next;
+  }
+  return 0;
+}
 ShortestPaths dijkstra(Graph g, Vertex v) {
 	ShortestPaths throwAway;
   throwAway.src = v;
   int V = numVerticies(g);
   throwAway.noNodes = V;
   throwAway.pred = malloc(V*(sizeof(PredNode*)));
-  
+  throwAway.dist = malloc(V*(sizeof(int)));
   //set all pred values to NULL
   for (int c =0; c<V; c++){
     throwAway.pred[c]= NULL;
+    throwAway.dist[c]= INT_MAX;
   }
-  int dist[V];
   int isInPQ[V];
   PQ pq = newPQ();
   //initiate the piority queue with all the vertices.
   for (int i=0; i<V; i++){
-    dist[i] = INT_MAX;
+    throwAway.dist[i] = INT_MAX;
     ItemPQ new;
     new.key = i;
-    new.value = dist[i];
+    new.value = throwAway.dist[i];
     addPQ(pq, new);
     isInPQ[i] = 1;
   } 
+/*
+  printf("_______________________");
+  for(int i=0; i<V; i++){
+    printf("dist[%d] = %d\n", i, throwAway.dist[i]);
+  }
+  printf("_______________________");
+*/
   //showPQ(pq);
   //printf("___________");
   //set the dist value of src vertex to 0 so that it is extracted first
@@ -69,7 +85,7 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
   new.value = 0;
   updatePQ(pq, new);
   //showPQ(pq);
-  dist[v] = 0;
+  throwAway.dist[v] = 0;
   //in the loop, PQ contains all the node with nodes with uninitialized shortest distance
   while(!PQEmpty(pq)){
     ItemPQ min = dequeuePQ(pq);
@@ -82,9 +98,9 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
     while (p!= NULL){
       int j = p->w; 
       //if shortest distance to j is not finalized yet, and distance to j through i is less than its previously calculated distance
-      if(isInPQ[j]!=0 && dist[i]!=INT_MAX && p->weight + dist[i] < dist[j]){
-        dist[j] = dist[i] + p->weight;//i->j
-        //printf("dist[%d]%d = dist[%d]%d + [%d]%d\n", j,dist[j], i, dist[i], j, p->weight);
+      if(isInPQ[j]!=0 && throwAway.dist[i]!=INT_MAX && p->weight + throwAway.dist[i] < throwAway.dist[j]){
+        throwAway.dist[j] = throwAway.dist[i] + p->weight;//i->j
+       // printf("dist[%d]%d = dist[%d]%d + [%d]%d\n", j,throwAway.dist[j], i, throwAway.dist[i], j, p->weight);
         PredNode* pred = (PredNode*)malloc(sizeof(PredNode));
         pred->v = i;
         pred->next = NULL;
@@ -93,13 +109,12 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
         //update the distance value in PQ
         ItemPQ tmp;
         tmp.key = j;
-        tmp.value = dist[j];
+        tmp.value = throwAway.dist[j];
         //printf("ITEM KEY[%d], ITEM VALUE[%d]\n",j,dist[j]);
         updatePQ(pq, tmp);
         //showPQ(pq);
       }
-      else if(isInPQ[j]!=0 && dist[i]!=INT_MAX && p->weight + dist[i] == dist[j]){
-        dist[j] = dist[i] + p->weight;//i->j
+      else if(isInPQ[j]!=0 && throwAway.dist[i]!=INT_MAX && p->weight + throwAway.dist[i] == throwAway.dist[j] &&isInList(throwAway.pred[j],i)==0){
         //printf("dist[%d]%d = dist[%d]%d + [%d]%d\n", j,dist[j], i, dist[i], j, p->weight);
         PredNode* pred = (PredNode*)malloc(sizeof(PredNode));
         pred->v = i;
@@ -113,7 +128,7 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
         //update the distance value in PQ
         ItemPQ tmp;
         tmp.key = j;
-        tmp.value = dist[j];
+        tmp.value = throwAway.dist[j];
         //printf("ITEM KEY[%d], ITEM VALUE[%d]\n",j,dist[j]);
         updatePQ(pq, tmp);
         //showPQ(pq);
@@ -122,11 +137,10 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
     }
   }
   for (int i =0; i<V; i++){
-    if (dist[i] == INT_MAX) {
-      dist[i] = 0;
-    }
+    if(throwAway.pred[i]==NULL){
+      throwAway.dist[i] =0;
+    } 
   }
-  throwAway.dist = dist;
   freePQ(pq);
 	return throwAway;
 }
@@ -136,8 +150,16 @@ void showShortestPaths(ShortestPaths paths) {
 
 }
 
-void  freeShortestPaths(ShortestPaths paths) {
-
+void freeShortestPaths(ShortestPaths paths) {
+  for (int i=0; i< paths.noNodes; i++){
+    PredNode* prev = paths.pred[i];
+    PredNode* curr = paths.pred[i];
+    while (curr!= NULL){
+      curr = curr->next;
+      free(prev);
+      prev= curr;
+    }
+  }
 }
 
 
