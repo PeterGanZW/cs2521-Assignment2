@@ -24,7 +24,8 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
   throwAway.src = v;
   int V = numVerticies(g);
   throwAway.noNodes = V;
-  throwAway.pred = malloc(V*(sizeof(PredNode)));
+  throwAway.pred = malloc(V*(sizeof(PredNode*)));
+  
   //set all pred values to NULL
   for (int c =0; c<V; c++){
     throwAway.pred[c]= NULL;
@@ -71,6 +72,7 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
       p = p->next;
     }
   }
+  throwAway.dist = dist;
 	return throwAway;
 }
 
