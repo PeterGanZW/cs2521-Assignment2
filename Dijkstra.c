@@ -121,6 +121,11 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
       p = p->next;
     }
   }
+  for (int i =0; i<V; i++){
+    if (dist[i] == INT_MAX) {
+      dist[i] = 0;
+    }
+  }
   throwAway.dist = dist;
   freePQ(pq);
 	return throwAway;
