@@ -143,7 +143,7 @@ int  numVerticies(Graph g){
 AdjList outIncident(Graph g, Vertex v){
     assert(v != NULL);
     assert(validV(g,v));
-    AdjList outgoing = g->edges[v];
+    AdjList outgoing = newNode(g->edges[v]->w,g->edges[v]->weight);
     AdjList outindex = outgoing;
     AdjList curr = g->edges[v]->next;
     while(curr != NULL){
@@ -162,14 +162,43 @@ AdjList outIncident(Graph g, Vertex v){
 AdjList inIncident(Graph g, Vertex v){
     assert(v != NULL);
     assert(validV(g,v));
-    AdjList incoming = g->edges[v];
+    AdjList incoming = newNode(-1,-1);
     AdjList index = incoming;
-    AdjList curr = 
-
-
+    int i = 0;
+    while(i < g->nV){
+        AdjList curr = g->edges[i];
+        while(curr != NULL){
+            if(curr->w == v){
+                if(incoming->w == -1){
+                    incoming = newNode(curr->w,curr->weight);
+                    index = incoming;
+                }else{
+                    index->next = newNode(curr->w,curr->weight);
+                    index = index->next;
+                }
+            }
+            curr = curr->next;
+        }
+        i++;
+    }
+    return incoming;
 }
 
-void  showGraph(Graph g);
+void  showGraph(Graph g){
+    assert(g != NULL);
+    printf("#vertices = %d, #edges = %d\n",numVerticies(g),g->nE);
+    for(int i =0; i < g->nV; i++){
+        adjListNode* curr = g->List[i];
+        printf("%d ----->", i);
+        while (curr != NULL){
+            printf("%d",curr->w);
+            printf("(weight:%d)",curr->weight);
+            curr = curr->next;
+        }
+    printf("\n");
+    }
+}
+
 void  freeGraph(Graph g){
     for(int i = 0; i < nV; i++){
         AdjList curr = g->adges[i];
@@ -181,3 +210,6 @@ void  freeGraph(Graph g){
     }
     free(g);
 }
+	
+	
+	
