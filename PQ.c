@@ -147,7 +147,7 @@ static BSTree BSTreeDelete(BSTree t,ItemPQ element)
         return NULL;
     else if (element.value < t->element.value)
         t->left = BSTreeDelete(t->left, element);
-    else if (element.value > t->element.value)
+    else if (element.value >= t->element.value && element.key!=t->element.key)
         t->right = BSTreeDelete(t->right, element);
     else // (v == t->value)
         t = deleteRoot(t);
@@ -174,7 +174,7 @@ void updatePQ(PQ pq, ItemPQ element) {
     //printf("THE NODE HAS BEEN FOUND key: %d, value:%d\n", node->element.key, node->element.value);
     //remove the node
     if (node!=NULL) {
-    pq->root = BSTreeDelete(pq->root,node->element);
+    pq->root = BSTreeDelete(pq->root, element);
     //reinsert the new element into tree.
     pq->root = BSTreeInsert(pq->root, element);
     }

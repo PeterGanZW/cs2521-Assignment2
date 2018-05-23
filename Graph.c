@@ -25,17 +25,17 @@ Graph newGraph(int noNodes){
     return graph;
 }
 
-adjListNode* newNode(int v, int weight){
+adjListNode* newNode(int v, int weight, adjListNode* next){
     adjListNode* new = malloc(sizeof(adjListNode));
     new->w = v;
-    new->next = NULL;
+    new->next = next;
     new->weight = weight;
     return new;
 }
 
 void insertEdge(Graph g, Vertex src, Vertex dest, int weight){
     //Add edge from src to dest
-    adjListNode* new = newNode(dest,weight);
+    adjListNode* new = newNode(dest,weight,NULL);
     new->next = g->List[src];
     g->List[src] = new;
     g->noEdges++;
@@ -81,11 +81,11 @@ int  numVerticies(Graph g){
 AdjList outIncident(Graph g, Vertex v){
     if (g->List[v] == NULL) return NULL;
     adjListNode* curr = g->List[v];
-    adjListNode* newlist = newNode(curr->w,curr->weight); 
+    adjListNode* newlist = newNode(curr->w,curr->weight,NULL); 
     while(curr->next!= NULL){
-        adjListNode* new = newNode(curr->next->w,curr->next->weight);
-        new -> next = newlist->next;
-        newlist-> next = new;
+        adjListNode* new = newNode(curr->next->w,curr->next->weight,NULL);
+        new -> next = newlist;
+        newlist = new;
         curr = curr->next;
     }
     return newlist;
@@ -96,7 +96,7 @@ AdjList outIncident(Graph g, Vertex v){
  * on incoming edges from a given vertex.
 **/
 AdjList inIncident(Graph g, Vertex v){
-    adjListNode* newlist = newNode(-1, -1); 
+    adjListNode* newlist = newNode(-1, -1, NULL); 
     for (int i =0; i< v; i++){
         adjListNode* curr = g->List[i];
         while(curr!= NULL){
@@ -123,7 +123,7 @@ void addNode (AdjList list, int i, int weight){
         list -> w = i;
         return;
     } 
-    adjListNode* new = newNode(i,weight);
+    adjListNode* new = newNode(i,weight, NULL);
     adjListNode* next = list-> next;
     new -> next = next;
     list -> next = new;
