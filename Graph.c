@@ -15,11 +15,11 @@ void addNode (AdjList list, int i, int weight);
 
 Graph newGraph(int noNodes){
     Graph graph = malloc(sizeof(struct GraphRep));
-    graph -> noNodes = noNodes;
+    graph -> noNodes = noNodes+1;
     graph -> noEdges = 0;
-    graph -> List = malloc(noNodes*sizeof(adjListNode*));
+    graph -> List = malloc((noNodes+1)*sizeof(adjListNode*));
 
-    for(int i =0; i<noNodes; i++){
+    for(int i =0; i<noNodes+1; i++){
         graph->List[i] = NULL;
     }
     return graph;

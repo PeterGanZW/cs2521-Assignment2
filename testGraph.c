@@ -17,6 +17,7 @@ int main(){
   insertEdge(g,3,2,6);
   insertEdge(g,3,4,4);
   insertEdge(g,3,1,3);
+  insertEdge(g,0,1,2);
   removeEdge(g,3,2);
   showGraph(g);
 

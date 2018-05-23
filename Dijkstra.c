@@ -47,6 +47,7 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
   new.key = v;
   new.value = 0;
   updatePQ(pq, new);
+  dist[v] = 0;
   //in the loop, PQ contains all the node with nodes with uninitialized shortest distance
   while(!PQEmpty(pq)){
     ItemPQ min = dequeuePQ(pq);
@@ -55,7 +56,7 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
     //Traverse through all adj vertices of i and update their distance values
     AdjList p = outIncident(g, i);//get all outgoing edges from graph
     while (p!= NULL){
-      int j = p->w;
+      int j = p->w; 
       //if shortest distance to j is not finalized yet, and distance to j through i is less than its previously calculated distance
       if(isInPQ[j]!=0 && dist[i]!=INT_MAX && p->weight + dist[i] < dist[j]){
         dist[j] = dist[i] + p->weight;//i->j

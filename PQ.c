@@ -173,9 +173,11 @@ void updatePQ(PQ pq, ItemPQ element) {
     BSTNode node = findNode(pq->root, element.key);//traverse all nodes to find the key.
     //printf("THE NODE HAS BEEN FOUND key: %d, value:%d\n", node->element.key, node->element.value);
     //remove the node
+    if (node!=NULL) {
     pq->root = BSTreeDelete(pq->root,node->element);
     //reinsert the new element into tree.
     pq->root = BSTreeInsert(pq->root, element);
+    }
 }
 
 
