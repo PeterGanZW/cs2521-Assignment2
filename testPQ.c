@@ -25,6 +25,6 @@ int main(){
   updatePQ(pq,a);
   b = makeNewItem(1, 1);
   updatePQ(pq,b);
-  showPQ(pq);
+  freePQ(pq);
   return EXIT_SUCCESS;
 }

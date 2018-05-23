@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-
 /*
 typedef struct PQRep *PQ;
 typedef struct ItemPQ {
@@ -65,7 +64,7 @@ PQ newPQ(){
 }
 
 int PQEmpty(PQ p) {
-	return (p== NULL);
+	return (p->root== NULL);
 }
 
 void addPQ(PQ pq, ItemPQ element) {
@@ -207,6 +206,7 @@ void printBSTree(BSTree t){
 }
 
 void showPQ(PQ pq) {
+    assert(pq!=NULL);
     printBSTree(pq->root);
 }
 
