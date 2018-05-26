@@ -52,8 +52,20 @@ NodeValues degreeCentrality(Graph g) {
 	return throwAway;
 }
 
+static int countPathSum(ShortestPaths sp){
+	int sum  =0;
+	for (int i=0; i< sp.noNodes; i++){
+		sum+=sp.dist[i];
+	}
+	return sum;
+}
 NodeValues closenessCentrality(Graph g){
 	NodeValues throwAway = {0};
+	throwAway.noNodes = numVerticies(g);
+	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
+	for (int i =0; i<throwAway.noNodes; i++){
+		throwAway.values[i] = (double)(throwAway.noNodes-1)/(double)(countPathSum((dijkstra(g, i))));
+	}
 	return throwAway;
 }
 
