@@ -57,7 +57,7 @@ Graph readGraph(char* file) {
 	}
 	fclose(f);
 
-	Graph g = newGraph(maxVert);
+	Graph g = newGraph(maxVert+1);
 	i = 0;
 	while(i < lines) {
 		insertEdge(g,nums[i][0],nums[i][1],nums[i][2]);

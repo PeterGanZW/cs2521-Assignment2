@@ -5,16 +5,50 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-NodeValues outDegreeCentrality(Graph g){
+/*
+typedef struct NodeValues {
+   int noNodes;
+   double* values;
+} NodeValues;
+*/
+static int countListItems(AdjList list){
+	int count = 0;
+	while (list != NULL){
+		count++;
+		list = list -> next;
+	}
+	return count;
+}
+
+NodeValues outDegreeCentrality(Graph g){//number of outward edges from this vertice
 	NodeValues throwAway = {0};
+	throwAway.noNodes = numVerticies(g);
+	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
+	for (int i =0; i<throwAway.noNodes; i++){
+		AdjList list = outIncident(g,i);
+		throwAway.values[i] = (double)countListItems(list);
+	}
 	return throwAway;
 }
 NodeValues inDegreeCentrality(Graph g){
 	NodeValues throwAway = {0};
+	throwAway.noNodes = numVerticies(g);
+	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
+	for (int i =0; i<throwAway.noNodes; i++){
+		AdjList list = inIncident(g,i);
+		throwAway.values[i] = (double)countListItems(list);
+	}
 	return throwAway;
 }
 NodeValues degreeCentrality(Graph g) {
 	NodeValues throwAway = {0};
+	throwAway.noNodes = numVerticies(g);
+	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
+	for (int i =0; i<throwAway.noNodes; i++){
+		AdjList listin = inIncident(g,i);
+		AdjList listout = outIncident(g,i);
+		throwAway.values[i] = ((double)countListItems(listin)+(double)countListItems(listout));
+	}
 	return throwAway;
 }
 
@@ -34,7 +68,9 @@ NodeValues betweennessCentralityNormalised(Graph g){
 }
 
 void showNodeValues(NodeValues values){
-
+	for (int i =0; i<values.noNodes; i++){
+		printf("%d: %f\n", i, values.values[i]);
+	}
 }
 
 void freeNodeValues(NodeValues values){

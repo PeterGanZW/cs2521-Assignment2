@@ -15,11 +15,11 @@ void addNode (AdjList list, int i, int weight);
 
 Graph newGraph(int noNodes){
     Graph graph = malloc(sizeof(struct GraphRep));
-    graph -> noNodes = noNodes+1;
+    graph -> noNodes = noNodes;
     graph -> noEdges = 0;
-    graph -> List = malloc((noNodes+1)*sizeof(adjListNode*));
+    graph -> List = malloc((noNodes)*sizeof(adjListNode*));
 
-    for(int i =0; i<noNodes+1; i++){
+    for(int i =0; i<noNodes; i++){
         graph->List[i] = NULL;
     }
     return graph;
@@ -115,12 +115,14 @@ AdjList inIncident(Graph g, Vertex v){
             curr = curr-> next;
         }
     }
+    if (newlist->w == -1) return NULL;
     return newlist;
 }
 
 void addNode (AdjList list, int i, int weight){
     if (list->w == -1){
         list -> w = i;
+        list -> weight = weight;
         return;
     } 
     adjListNode* new = newNode(i,weight, NULL);
