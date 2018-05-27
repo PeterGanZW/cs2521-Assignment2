@@ -75,7 +75,6 @@ NodeValues closenessCentrality(Graph g){
 static double countAppearances(ShortestPaths sp, int vertex){
 	double sum = 0;
 	int i;
-	printf("For Node:%d\n", sp.src);
 	for (i = 0; i< sp.src; i++){
 		PredNode* tmp = sp.pred[i];
 		int count = 0;
@@ -99,11 +98,7 @@ static double countAppearances(ShortestPaths sp, int vertex){
 			tmp = tmp->next;
 		}
 		if (identifer == 1){
-			printf("i = %d vertex = %d,count =%d\n", i, vertex,count);
 			sum += (double)1/(double)count;
-			printf("sum for %d is %lf\n", vertex, sum);
-		
-
 		}
 	}
 	for (i = sp.src+1; i< sp.noNodes; i++){
@@ -129,21 +124,19 @@ static double countAppearances(ShortestPaths sp, int vertex){
 			tmp = tmp->next;
 		}
 		if (identifer == 1){
-			printf("i = %d vertex = %d,count =%d\n", i, vertex,count);
 			sum += (double)1/(double)count;
-			printf("sum for %d is %lf\n", vertex, sum);
-		
-
 		}
 	}
-	
 	return sum;
 }
 
 NodeValues betweennessCentrality(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
-	throwAway.values =  calloc(0,throwAway.noNodes*sizeof(double));
+	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
+	for(int i=0; i<throwAway.noNodes; i++){
+		throwAway.values[i] = 0;
+	}
 	for (int i =0; i<throwAway.noNodes; i++){
 		for(int j= 0; j<i;j++){
 			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j));
@@ -157,6 +150,19 @@ NodeValues betweennessCentrality(Graph g){
 
 NodeValues betweennessCentralityNormalised(Graph g){
 	NodeValues throwAway = {0};
+	throwAway.noNodes = numVerticies(g);
+	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
+	for(int i=0; i<throwAway.noNodes; i++){
+		throwAway.values[i] = 0;
+	}
+	for (int i =0; i<throwAway.noNodes; i++){
+		for(int j= 0; j<i;j++){
+			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
+		}
+		for(int j=i+1; j<throwAway.noNodes;j++){
+			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
+		}
+	}
 	return throwAway;
 }
 
