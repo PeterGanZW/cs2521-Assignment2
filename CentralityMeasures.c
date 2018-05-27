@@ -59,6 +59,7 @@ static int countPathSum(ShortestPaths sp){
 	}
 	return sum;
 }
+
 NodeValues closenessCentrality(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
@@ -69,8 +70,88 @@ NodeValues closenessCentrality(Graph g){
 	return throwAway;
 }
 
+
+
+static double countAppearances(ShortestPaths sp, int vertex){
+	double sum = 0;
+	int i;
+	printf("For Node:%d\n", sp.src);
+	for (i = 0; i< sp.src; i++){
+		PredNode* tmp = sp.pred[i];
+		int count = 0;
+		int identifer = 0;
+		while (tmp!=NULL){
+			count++;
+			if (tmp -> v == vertex) {
+				identifer = 1;
+			} else {
+				PredNode* curr = sp.pred[tmp->v];
+				while(curr!= NULL){
+					if (curr->v == vertex){
+						identifer = 1;
+						break;
+					}
+					else {
+						curr = sp.pred[curr->v];
+					}
+				}
+			}
+			tmp = tmp->next;
+		}
+		if (identifer == 1){
+			printf("i = %d vertex = %d,count =%d\n", i, vertex,count);
+			sum += (double)1/(double)count;
+			printf("sum for %d is %lf\n", vertex, sum);
+		
+
+		}
+	}
+	for (i = sp.src+1; i< sp.noNodes; i++){
+		PredNode* tmp = sp.pred[i];
+		int count = 0;
+		int identifer = 0;
+		while (tmp!=NULL){
+			count++;
+			if (tmp -> v == vertex) {
+				identifer = 1;
+			} else {
+				PredNode* curr = sp.pred[tmp->v];
+				while(curr!= NULL){
+					if (curr->v == vertex){
+						identifer = 1;
+						break;
+					}
+					else {
+						curr = sp.pred[curr->v];
+					}
+				}
+			}
+			tmp = tmp->next;
+		}
+		if (identifer == 1){
+			printf("i = %d vertex = %d,count =%d\n", i, vertex,count);
+			sum += (double)1/(double)count;
+			printf("sum for %d is %lf\n", vertex, sum);
+		
+
+		}
+	}
+	
+	return sum;
+}
+
 NodeValues betweennessCentrality(Graph g){
 	NodeValues throwAway = {0};
+	throwAway.noNodes = numVerticies(g);
+	throwAway.values =  calloc(0,throwAway.noNodes*sizeof(double));
+	for (int i =0; i<throwAway.noNodes; i++){
+		for(int j= 0; j<i;j++){
+			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j));
+		}
+		for(int j=i+1; j<throwAway.noNodes;j++){
+			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j));
+		}
+	}
 	return throwAway;
 }
 

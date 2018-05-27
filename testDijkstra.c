@@ -84,7 +84,7 @@ int main(int argc, char* argv[]){
   int i;
   for(i=0; i<numVerticies(g); i++) {
     ShortestPaths paths = dijkstra(g,i);
-    displayShortestPathsStruct(paths);
+    showShortestPaths(paths);
     freeShortestPaths(paths);
   }
 }
