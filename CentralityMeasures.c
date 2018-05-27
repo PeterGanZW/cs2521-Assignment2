@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 /*
 typedef struct NodeValues {
    int noNodes;
@@ -59,13 +60,32 @@ static int countPathSum(ShortestPaths sp){
 	}
 	return sum;
 }
+static int countReachableNodes(ShortestPaths sp, int v){
+	int count = 0;
+	for(int i=0; i<sp.noNodes; i++){
+		if (sp.dist[i] != 0) {
+			count++;
+		}
+	}
+	count ++;
+	return count;
+}
 
 NodeValues closenessCentrality(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
 	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
 	for (int i =0; i<throwAway.noNodes; i++){
-		throwAway.values[i] = (double)(throwAway.noNodes-1)/(double)(countPathSum((dijkstra(g, i))));
+		throwAway.values[i] = 0.000000;
+	}
+	for (int i =0; i<throwAway.noNodes; i++){
+		ShortestPaths sp = dijkstra(g,i);
+		double n = (double)countReachableNodes(sp, i);
+		double N = (double)throwAway.noNodes;
+		double sum = (double)(countPathSum((sp)));
+		if (sum == 0) {throwAway.values[i] = 0; continue;}
+		throwAway.values[i] = (n-1) * (n-1) / (N-1) / (sum);
+		freeShortestPaths(sp);
 	}
 	return throwAway;
 }
@@ -134,15 +154,19 @@ NodeValues betweennessCentrality(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
 	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
-	for(int i=0; i<throwAway.noNodes; i++){
+	for(int i=0; i<throwAway.noNodes+1; i++){
 		throwAway.values[i] = 0;
 	}
 	for (int i =0; i<throwAway.noNodes; i++){
 		for(int j= 0; j<i;j++){
-			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j));
+			ShortestPaths sp = dijkstra(g, i);
+			throwAway.values[j] +=(double)(countAppearances(sp,j));
+			freeShortestPaths(sp);
 		}
 		for(int j=i+1; j<throwAway.noNodes;j++){
-			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j));
+			ShortestPaths sp = dijkstra(g, i);
+			throwAway.values[j] +=(double)(countAppearances(sp,j));
+			freeShortestPaths(sp);
 		}
 	}
 	return throwAway;
@@ -152,15 +176,19 @@ NodeValues betweennessCentralityNormalised(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
 	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
-	for(int i=0; i<throwAway.noNodes; i++){
+	for(int i=0; i<throwAway.noNodes+1; i++){
 		throwAway.values[i] = 0;
 	}
 	for (int i =0; i<throwAway.noNodes; i++){
 		for(int j= 0; j<i;j++){
-			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
+			ShortestPaths sp = dijkstra(g, i);
+			throwAway.values[j] +=(double)(countAppearances(sp,j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
+			freeShortestPaths(sp);
 		}
 		for(int j=i+1; j<throwAway.noNodes;j++){
-			throwAway.values[j] +=(double)(countAppearances((dijkstra(g, i)),j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
+			ShortestPaths sp = dijkstra(g, i);
+			throwAway.values[j] +=(double)(countAppearances(sp,j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
+			freeShortestPaths(sp);
 		}
 	}
 	return throwAway;
@@ -173,5 +201,5 @@ void showNodeValues(NodeValues values){
 }
 
 void freeNodeValues(NodeValues values){
-
+	free(values.values);
 }
