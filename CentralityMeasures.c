@@ -154,7 +154,7 @@ NodeValues betweennessCentrality(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
 	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
-	for(int i=0; i<throwAway.noNodes+1; i++){
+	for(int i=0; i<throwAway.noNodes; i++){
 		throwAway.values[i] = 0;
 	}
 	for (int i =0; i<throwAway.noNodes; i++){
@@ -176,7 +176,7 @@ NodeValues betweennessCentralityNormalised(Graph g){
 	NodeValues throwAway = {0};
 	throwAway.noNodes = numVerticies(g);
 	throwAway.values =  malloc(throwAway.noNodes*sizeof(double));
-	for(int i=0; i<throwAway.noNodes+1; i++){
+	for(int i=0; i<throwAway.noNodes; i++){
 		throwAway.values[i] = 0;
 	}
 	for (int i =0; i<throwAway.noNodes; i++){
