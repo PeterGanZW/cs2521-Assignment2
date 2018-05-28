@@ -47,6 +47,9 @@ static int isInList(PredNode* head, int i){
   }
   return 0;
 }
+
+
+
 ShortestPaths dijkstra(Graph g, Vertex v) {
 	ShortestPaths throwAway;
   throwAway.src = v;
@@ -90,45 +93,45 @@ ShortestPaths dijkstra(Graph g, Vertex v) {
   while(!PQEmpty(pq)){
     ItemPQ min = dequeuePQ(pq);
     isInPQ[min.key] = 0;
-    int i = min.key; //store the key value
+    int src = min.key; //store the key value
     //printf("\n\n\nFOR NODE %d\n", i);
     //Traverse through all adj vertices of i and update their distance values
-    AdjList p = outIncident(g, i);//get all outgoing edges from graph
+    AdjList p = outIncident(g, src);//get all outgoing edges from graph
     //printlist(p);
     while (p!= NULL){
-      int j = p->w; 
-      //if shortest distance to j is not finalized yet, and distance to j through i is less than its previously calculated distance
-      if(isInPQ[j]!=0 && throwAway.dist[i]!=INT_MAX && p->weight + throwAway.dist[i] < throwAway.dist[j]){
-        throwAway.dist[j] = throwAway.dist[i] + p->weight;//i->j
+      int dest = p->w; 
+      //if shortest distance to deset is not finalized yet, and distance to j through i is less than its previously calculated distance
+      if(isInPQ[dest]!=0 && throwAway.dist[src]!=INT_MAX && p->weight + throwAway.dist[src] < throwAway.dist[dest]){
+        throwAway.dist[dest] = throwAway.dist[src] + p->weight;//i->j
        // printf("dist[%d]%d = dist[%d]%d + [%d]%d\n", j,throwAway.dist[j], i, throwAway.dist[i], j, p->weight);
         PredNode* pred = (PredNode*)malloc(sizeof(PredNode));
-        pred->v = i;
+        pred->v = src;
         pred->next = NULL;
-        throwAway.pred[j] = pred;
+        throwAway.pred[dest] = pred;
         //addIntoList(throwAway.pred[j], pred);
         //update the distance value in PQ
         ItemPQ tmp;
-        tmp.key = j;
-        tmp.value = throwAway.dist[j];
+        tmp.key = dest;
+        tmp.value = throwAway.dist[dest];
         //printf("ITEM KEY[%d], ITEM VALUE[%d]\n",j,dist[j]);
         updatePQ(pq, tmp);
         //showPQ(pq);
       }
-      else if(isInPQ[j]!=0 && throwAway.dist[i]!=INT_MAX && p->weight + throwAway.dist[i] == throwAway.dist[j] &&isInList(throwAway.pred[j],i)==0){
+      else if(isInPQ[dest]!=0 && throwAway.dist[src]!=INT_MAX && p->weight + throwAway.dist[src] == throwAway.dist[dest] &&isInList(throwAway.pred[dest],src)==0){
         //printf("dist[%d]%d = dist[%d]%d + [%d]%d\n", j,dist[j], i, dist[i], j, p->weight);
         PredNode* pred = (PredNode*)malloc(sizeof(PredNode));
-        pred->v = i;
+        pred->v = src;
         pred->next = NULL;
-        PredNode* t = throwAway.pred[j];
-        while (t->next!=NULL){
-          t = t->next;
+        PredNode* t = throwAway.pred[dest];
+        while(t->next!=NULL){
+          t= t->next;
         }
         t->next = pred;
         //addIntoList(throwAway.pred[j], pred);
         //update the distance value in PQ
         ItemPQ tmp;
-        tmp.key = j;
-        tmp.value = throwAway.dist[j];
+        tmp.key = dest;
+        tmp.value = throwAway.dist[dest];
         //printf("ITEM KEY[%d], ITEM VALUE[%d]\n",j,dist[j]);
         updatePQ(pq, tmp);
         //showPQ(pq);

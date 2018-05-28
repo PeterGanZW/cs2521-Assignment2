@@ -13,18 +13,27 @@ void printItem(ItemPQ item){
 }
 int main(){
   ItemPQ a = makeNewItem(1,3);
-  ItemPQ b = makeNewItem(2,4);
-  ItemPQ c = makeNewItem(3,2);
-  ItemPQ d = makeNewItem(5,1);
+  ItemPQ b = makeNewItem(2,3);
+  ItemPQ c = makeNewItem(3,3);
+  ItemPQ d = makeNewItem(5,3);
   PQ pq = newPQ();
+  int i = PQEmpty(pq);
+  printf("%d", i);
   addPQ(pq, a);
   addPQ(pq, b);
   addPQ(pq, c);
   addPQ(pq, d);
-  a = makeNewItem(1, 10);
-  updatePQ(pq,a);
-  b = makeNewItem(1, 1);
-  updatePQ(pq,b);
+  showPQ(pq);
+  printf("___________\n");
+  ItemPQ e = dequeuePQ(pq);
+  showPQ(pq);
+  printItem(e);
+  dequeuePQ(pq);
+  showPQ(pq);
+  dequeuePQ(pq);
+  showPQ(pq);
+  dequeuePQ(pq);
+  showPQ(pq);
   freePQ(pq);
   return EXIT_SUCCESS;
 }

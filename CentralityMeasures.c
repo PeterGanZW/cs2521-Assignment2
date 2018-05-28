@@ -90,56 +90,78 @@ NodeValues closenessCentrality(Graph g){
 	return throwAway;
 }
 
+struct Queue{
+	PredNode* Head;
+};
+typedef struct  Queue* Queue;
 
+static void enqueue(Queue q, PredNode* n){
+	if (q->Head == NULL) {
+		q->Head = n;
+		return;
+	} 
+	PredNode* tmp = q->Head;
+	while (tmp->next!=NULL){
+		tmp = tmp->next;
+	}
+	tmp ->next = n;
+}
+
+static PredNode* dequeue(Queue q){
+	if (q->Head == NULL) return NULL;
+	PredNode* tmp = q->Head;
+	q->Head = tmp->next;
+	return tmp;
+}
+
+static int emptyQ(Queue q){
+	return (q->Head == NULL);
+}
+static int BFS(ShortestPaths sp, PredNode* n, int vertex){
+	Queue q = malloc(sizeof(struct Queue));
+	q->Head = NULL;
+	int visited[sp.noNodes];
+	for(int i =0; i<sp.noNodes; i++){
+		visited[i] = 0;
+	}
+	enqueue(q,n);
+	while(!emptyQ(q)){
+		PredNode* curr = dequeue(q);
+		visited[curr->v] = 1;
+		while(curr!=NULL){
+			if (curr->v == vertex) return 1;
+			if (visited[sp.pred[curr->v]->v] == 0)
+				enqueue(q,sp.pred[curr->v]);
+			curr = curr->next;
+		}
+	}
+	return 0;
+}
 
 static double countAppearances(ShortestPaths sp, int vertex){
 	double sum = 0;
-	int i;
-	for (i = 0; i< sp.src; i++){
-		PredNode* tmp = sp.pred[i];
+	for (int index = 0; index< sp.noNodes; index++){
+		if (index==sp.src) continue;//does not count pred[src]
+		PredNode* tmp = sp.pred[index];
 		int count = 0;
 		int identifer = 0;
 		while (tmp!=NULL){
 			count++;
-			if (tmp -> v == vertex) {
+			if (tmp->v == vertex) {
 				identifer = 1;
 			} else {
 				PredNode* curr = sp.pred[tmp->v];
-				while(curr!= NULL){
+				/*while(curr!= NULL){
 					if (curr->v == vertex){
-						identifer = 1;
+						identifer=1;
 						break;
 					}
 					else {
 						curr = sp.pred[curr->v];
+						}
 					}
-				}
-			}
-			tmp = tmp->next;
-		}
-		if (identifer == 1){
-			sum += (double)1/(double)count;
-		}
-	}
-	for (i = sp.src+1; i< sp.noNodes; i++){
-		PredNode* tmp = sp.pred[i];
-		int count = 0;
-		int identifer = 0;
-		while (tmp!=NULL){
-			count++;
-			if (tmp -> v == vertex) {
-				identifer = 1;
-			} else {
-				PredNode* curr = sp.pred[tmp->v];
-				while(curr!= NULL){
-					if (curr->v == vertex){
-						identifer = 1;
-						break;
-					}
-					else {
-						curr = sp.pred[curr->v];
-					}
-				}
+				}*/
+				identifer = BFS(sp,curr, vertex);
 			}
 			tmp = tmp->next;
 		}
@@ -158,12 +180,8 @@ NodeValues betweennessCentrality(Graph g){
 		throwAway.values[i] = 0;
 	}
 	for (int i =0; i<throwAway.noNodes; i++){
-		for(int j= 0; j<i;j++){
-			ShortestPaths sp = dijkstra(g, i);
-			throwAway.values[j] +=(double)(countAppearances(sp,j));
-			freeShortestPaths(sp);
-		}
-		for(int j=i+1; j<throwAway.noNodes;j++){
+		for(int j= 0; j<throwAway.noNodes;j++){
+			if (j==i) continue;
 			ShortestPaths sp = dijkstra(g, i);
 			throwAway.values[j] +=(double)(countAppearances(sp,j));
 			freeShortestPaths(sp);
@@ -180,12 +198,8 @@ NodeValues betweennessCentralityNormalised(Graph g){
 		throwAway.values[i] = 0;
 	}
 	for (int i =0; i<throwAway.noNodes; i++){
-		for(int j= 0; j<i;j++){
-			ShortestPaths sp = dijkstra(g, i);
-			throwAway.values[j] +=(double)(countAppearances(sp,j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
-			freeShortestPaths(sp);
-		}
-		for(int j=i+1; j<throwAway.noNodes;j++){
+		for(int j= 0; j<throwAway.noNodes;j++){
+			if (j==i) continue;
 			ShortestPaths sp = dijkstra(g, i);
 			throwAway.values[j] +=(double)(countAppearances(sp,j))/(double)(throwAway.noNodes-1)/(double)(throwAway.noNodes-2);
 			freeShortestPaths(sp);

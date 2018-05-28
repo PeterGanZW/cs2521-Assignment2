@@ -1,3 +1,14 @@
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 0
   Distance
     0 : X
@@ -33,7 +44,6 @@ Node 0
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -68,10 +78,20 @@ Node 0
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 1
   Distance
-    0 : 3
+    0 : 0
     1 : X
     2 : 0
     3 : 0
@@ -104,9 +124,8 @@ Node 1
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [1]->NULL
+    0 : NULL
     1 : NULL
     2 : NULL
     3 : NULL
@@ -139,11 +158,21 @@ Node 1
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 2
   Distance
-    0 : 3
-    1 : 10
+    0 : 0
+    1 : 0
     2 : X
     3 : 0
     4 : 0
@@ -175,10 +204,9 @@ Node 2
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [2]->NULL
-    1 : [2]->NULL
+    0 : NULL
+    1 : NULL
     2 : NULL
     3 : NULL
     4 : NULL
@@ -210,12 +238,22 @@ Node 2
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 3
   Distance
-    0 : 7
-    1 : 5
-    2 : 4
+    0 : 0
+    1 : 0
+    2 : 0
     3 : X
     4 : 0
     5 : 0
@@ -246,11 +284,10 @@ Node 3
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [2]->NULL
-    1 : [3]->NULL
-    2 : [3]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -281,10 +318,20 @@ Node 3
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 4
   Distance
-    0 : 7
+    0 : 0
     1 : 0
     2 : 0
     3 : 0
@@ -317,9 +364,8 @@ Node 4
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [4]->NULL
+    0 : NULL
     1 : NULL
     2 : NULL
     3 : NULL
@@ -352,10 +398,20 @@ Node 4
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 5
   Distance
-    0 : 1
+    0 : 0
     1 : 0
     2 : 0
     3 : 0
@@ -388,9 +444,8 @@ Node 5
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [5]->NULL
+    0 : NULL
     1 : NULL
     2 : NULL
     3 : NULL
@@ -423,15 +478,25 @@ Node 5
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 6
   Distance
-    0 : 2
+    0 : 0
     1 : 0
     2 : 0
     3 : 0
-    4 : 8
-    5 : 6
+    4 : 0
+    5 : 0
     6 : X
     7 : 0
     8 : 0
@@ -459,14 +524,13 @@ Node 6
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [6]->NULL
+    0 : NULL
     1 : NULL
     2 : NULL
     3 : NULL
-    4 : [6]->NULL
-    5 : [6]->NULL
+    4 : NULL
+    5 : NULL
     6 : NULL
     7 : NULL
     8 : NULL
@@ -494,13 +558,23 @@ Node 6
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 7
   Distance
-    0 : 6
-    1 : 6
-    2 : 3
-    3 : 2
+    0 : 0
+    1 : 0
+    2 : 0
+    3 : 0
     4 : 0
     5 : 0
     6 : 0
@@ -530,12 +604,11 @@ Node 7
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [7]->[2]->NULL
-    1 : [7]->NULL
-    2 : [7]->NULL
-    3 : [7]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
+    3 : NULL
     4 : NULL
     5 : NULL
     6 : NULL
@@ -565,12 +638,22 @@ Node 7
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 8
   Distance
-    0 : 3
-    1 : 15
-    2 : 5
+    0 : 0
+    1 : 0
+    2 : 0
     3 : 0
     4 : 0
     5 : 0
@@ -601,11 +684,10 @@ Node 8
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [8]->NULL
-    1 : [2]->NULL
-    2 : [8]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -636,12 +718,22 @@ Node 8
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 9
   Distance
-    0 : 9
-    1 : 16
-    2 : 6
+    0 : 0
+    1 : 0
+    2 : 0
     3 : 0
     4 : 0
     5 : 0
@@ -672,11 +764,10 @@ Node 9
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [2]->NULL
-    1 : [2]->NULL
-    2 : [9]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -707,15 +798,25 @@ Node 9
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 10
   Distance
-    0 : 2
+    0 : 0
     1 : 0
     2 : 0
     3 : 0
-    4 : 10
-    5 : 1
+    4 : 0
+    5 : 0
     6 : 0
     7 : 0
     8 : 0
@@ -743,14 +844,13 @@ Node 10
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [5]->NULL
+    0 : NULL
     1 : NULL
     2 : NULL
     3 : NULL
-    4 : [10]->NULL
-    5 : [10]->NULL
+    4 : NULL
+    5 : NULL
     6 : NULL
     7 : NULL
     8 : NULL
@@ -778,10 +878,20 @@ Node 10
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 11
   Distance
-    0 : 2
+    0 : 0
     1 : 0
     2 : 0
     3 : 0
@@ -814,9 +924,8 @@ Node 11
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [11]->NULL
+    0 : NULL
     1 : NULL
     2 : NULL
     3 : NULL
@@ -849,13 +958,23 @@ Node 11
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 12
   Distance
-    0 : 3
-    1 : 6
-    2 : 5
-    3 : 1
+    0 : 0
+    1 : 0
+    2 : 0
+    3 : 0
     4 : 0
     5 : 0
     6 : 0
@@ -885,12 +1004,11 @@ Node 12
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [12]->NULL
-    1 : [3]->NULL
-    2 : [3]->NULL
-    3 : [12]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
+    3 : NULL
     4 : NULL
     5 : NULL
     6 : NULL
@@ -920,13 +1038,23 @@ Node 12
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 13
   Distance
-    0 : 1
-    1 : 5
-    2 : 4
-    3 : 4
+    0 : 0
+    1 : 0
+    2 : 0
+    3 : 0
     4 : 0
     5 : 0
     6 : 0
@@ -956,12 +1084,11 @@ Node 13
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [13]->NULL
-    1 : [13]->NULL
-    2 : [13]->NULL
-    3 : [13]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
+    3 : NULL
     4 : NULL
     5 : NULL
     6 : NULL
@@ -991,7 +1118,17 @@ Node 13
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 14
   Distance
     0 : 0
@@ -1027,7 +1164,6 @@ Node 14
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1062,7 +1198,17 @@ Node 14
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 15
   Distance
     0 : 0
@@ -1098,7 +1244,6 @@ Node 15
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1133,16 +1278,26 @@ Node 15
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 16
   Distance
-    0 : 4
+    0 : 0
     1 : 0
     2 : 0
     3 : 0
-    4 : 13
-    5 : 3
-    6 : 5
+    4 : 0
+    5 : 0
+    6 : 0
     7 : 0
     8 : 0
     9 : 0
@@ -1169,81 +1324,9 @@ Node 16
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [5]->NULL
+    0 : NULL
     1 : NULL
-    2 : NULL
-    3 : NULL
-    4 : [6]->NULL
-    5 : [16]->NULL
-    6 : [16]->NULL
-    7 : NULL
-    8 : NULL
-    9 : NULL
-    10 : NULL
-    11 : NULL
-    12 : NULL
-    13 : NULL
-    14 : NULL
-    15 : NULL
-    16 : NULL
-    17 : NULL
-    18 : NULL
-    19 : NULL
-    20 : NULL
-    21 : NULL
-    22 : NULL
-    23 : NULL
-    24 : NULL
-    25 : NULL
-    26 : NULL
-    27 : NULL
-    28 : NULL
-    29 : NULL
-    30 : NULL
-    31 : NULL
-    32 : NULL
-    33 : NULL
-Node 17
-  Distance
-    0 : 5
-    1 : 2
-    2 : 0
-    3 : 0
-    4 : 0
-    5 : 0
-    6 : 0
-    7 : 0
-    8 : 0
-    9 : 0
-    10 : 0
-    11 : 0
-    12 : 0
-    13 : 0
-    14 : 0
-    15 : 0
-    16 : 0
-    17 : X
-    18 : 0
-    19 : 0
-    20 : 0
-    21 : 0
-    22 : 0
-    23 : 0
-    24 : 0
-    25 : 0
-    26 : 0
-    27 : 0
-    28 : 0
-    29 : 0
-    30 : 0
-    31 : 0
-    32 : 0
-    33 : 0
-  Preds
-    0 : [1]->NULL
-    1 : [17]->NULL
     2 : NULL
     3 : NULL
     4 : NULL
@@ -1275,7 +1358,97 @@ Node 17
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
+Node 17
+  Distance
+    0 : 0
+    1 : 0
+    2 : 0
+    3 : 0
+    4 : 0
+    5 : 0
+    6 : 0
+    7 : 0
+    8 : 0
+    9 : 0
+    10 : 0
+    11 : 0
+    12 : 0
+    13 : 0
+    14 : 0
+    15 : 0
+    16 : 0
+    17 : X
+    18 : 0
+    19 : 0
+    20 : 0
+    21 : 0
+    22 : 0
+    23 : 0
+    24 : 0
+    25 : 0
+    26 : 0
+    27 : 0
+    28 : 0
+    29 : 0
+    30 : 0
+    31 : 0
+    32 : 0
+  Preds
+    0 : NULL
+    1 : NULL
+    2 : NULL
+    3 : NULL
+    4 : NULL
+    5 : NULL
+    6 : NULL
+    7 : NULL
+    8 : NULL
+    9 : NULL
+    10 : NULL
+    11 : NULL
+    12 : NULL
+    13 : NULL
+    14 : NULL
+    15 : NULL
+    16 : NULL
+    17 : NULL
+    18 : NULL
+    19 : NULL
+    20 : NULL
+    21 : NULL
+    22 : NULL
+    23 : NULL
+    24 : NULL
+    25 : NULL
+    26 : NULL
+    27 : NULL
+    28 : NULL
+    29 : NULL
+    30 : NULL
+    31 : NULL
+    32 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 18
   Distance
     0 : 0
@@ -1311,7 +1484,6 @@ Node 18
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1346,11 +1518,21 @@ Node 18
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 19
   Distance
-    0 : 2
-    1 : 6
+    0 : 0
+    1 : 0
     2 : 0
     3 : 0
     4 : 0
@@ -1382,10 +1564,9 @@ Node 19
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [19]->NULL
-    1 : [19]->NULL
+    0 : NULL
+    1 : NULL
     2 : NULL
     3 : NULL
     4 : NULL
@@ -1417,7 +1598,17 @@ Node 19
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 20
   Distance
     0 : 0
@@ -1453,7 +1644,6 @@ Node 20
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1488,11 +1678,21 @@ Node 20
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 21
   Distance
-    0 : 9
-    1 : 8
+    0 : 0
+    1 : 0
     2 : 0
     3 : 0
     4 : 0
@@ -1524,10 +1724,9 @@ Node 21
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [21]->NULL
-    1 : [21]->NULL
+    0 : NULL
+    1 : NULL
     2 : NULL
     3 : NULL
     4 : NULL
@@ -1559,7 +1758,17 @@ Node 21
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 22
   Distance
     0 : 0
@@ -1595,7 +1804,6 @@ Node 22
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1630,7 +1838,17 @@ Node 22
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 23
   Distance
     0 : 0
@@ -1666,7 +1884,6 @@ Node 23
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1701,7 +1918,17 @@ Node 23
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 24
   Distance
     0 : 0
@@ -1737,7 +1964,6 @@ Node 24
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1772,7 +1998,17 @@ Node 24
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 25
   Distance
     0 : 0
@@ -1798,8 +2034,8 @@ Node 25
     20 : 0
     21 : 0
     22 : 0
-    23 : 3
-    24 : 7
+    23 : 0
+    24 : 0
     25 : X
     26 : 0
     27 : 0
@@ -1808,7 +2044,6 @@ Node 25
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1833,8 +2068,8 @@ Node 25
     20 : NULL
     21 : NULL
     22 : NULL
-    23 : [25]->NULL
-    24 : [25]->NULL
+    23 : NULL
+    24 : NULL
     25 : NULL
     26 : NULL
     27 : NULL
@@ -1843,7 +2078,17 @@ Node 25
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 26
   Distance
     0 : 0
@@ -1879,7 +2124,6 @@ Node 26
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -1914,12 +2158,22 @@ Node 26
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 27
   Distance
-    0 : 10
-    1 : 17
-    2 : 7
+    0 : 0
+    1 : 0
+    2 : 0
     3 : 0
     4 : 0
     5 : 0
@@ -1940,8 +2194,8 @@ Node 27
     20 : 0
     21 : 0
     22 : 0
-    23 : 7
-    24 : 10
+    23 : 0
+    24 : 0
     25 : 0
     26 : 0
     27 : X
@@ -1950,11 +2204,10 @@ Node 27
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [2]->NULL
-    1 : [2]->NULL
-    2 : [27]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -1975,8 +2228,8 @@ Node 27
     20 : NULL
     21 : NULL
     22 : NULL
-    23 : [27]->NULL
-    24 : [27]->NULL
+    23 : NULL
+    24 : NULL
     25 : NULL
     26 : NULL
     27 : NULL
@@ -1985,12 +2238,22 @@ Node 27
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 28
   Distance
-    0 : 8
-    1 : 15
-    2 : 5
+    0 : 0
+    1 : 0
+    2 : 0
     3 : 0
     4 : 0
     5 : 0
@@ -2021,11 +2284,10 @@ Node 28
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [2]->NULL
-    1 : [2]->NULL
-    2 : [28]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -2056,7 +2318,19 @@ Node 28
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 29
   Distance
     0 : 0
@@ -2082,7 +2356,7 @@ Node 29
     20 : 0
     21 : 0
     22 : 0
-    23 : 1
+    23 : 0
     24 : 0
     25 : 0
     26 : 7
@@ -2092,7 +2366,6 @@ Node 29
     30 : 0
     31 : 0
     32 : 0
-    33 : 0
   Preds
     0 : NULL
     1 : NULL
@@ -2117,7 +2390,7 @@ Node 29
     20 : NULL
     21 : NULL
     22 : NULL
-    23 : [29]->NULL
+    23 : NULL
     24 : NULL
     25 : NULL
     26 : [29]->NULL
@@ -2127,12 +2400,24 @@ Node 29
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 30
   Distance
-    0 : 4
-    1 : 1
-    2 : 8
+    0 : 0
+    1 : 0
+    2 : 0
     3 : 0
     4 : 0
     5 : 0
@@ -2163,11 +2448,10 @@ Node 30
     30 : X
     31 : 0
     32 : 0
-    33 : 0
   Preds
-    0 : [1]->NULL
-    1 : [30]->NULL
-    2 : [8]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -2198,12 +2482,22 @@ Node 30
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 31
   Distance
-    0 : 6
-    1 : 16
-    2 : 6
+    0 : 0
+    1 : 0
+    2 : 0
     3 : 0
     4 : 0
     5 : 0
@@ -2224,21 +2518,20 @@ Node 31
     20 : 0
     21 : 0
     22 : 0
-    23 : 8
-    24 : 10
-    25 : 5
+    23 : 0
+    24 : 0
+    25 : 0
     26 : 0
     27 : 0
-    28 : 1
+    28 : 0
     29 : 0
     30 : 0
     31 : X
     32 : 0
-    33 : 0
   Preds
-    0 : [31]->NULL
-    1 : [2]->NULL
-    2 : [28]->NULL
+    0 : NULL
+    1 : NULL
+    2 : NULL
     3 : NULL
     4 : NULL
     5 : NULL
@@ -2259,22 +2552,41 @@ Node 31
     20 : NULL
     21 : NULL
     22 : NULL
-    23 : [25]->NULL
-    24 : [31]->NULL
-    25 : [31]->NULL
+    23 : NULL
+    24 : NULL
+    25 : NULL
     26 : NULL
     27 : NULL
-    28 : [31]->NULL
+    28 : NULL
     29 : NULL
     30 : NULL
     31 : NULL
     32 : NULL
-    33 : NULL
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 29
+VALUE: 26, weight 7
+RETURNING NEWLIST FOR ITEM 30
+VALUE: 8, weight 3
+RETURNING NEWLIST FOR ITEM 32
+VALUE: 8, weight 8
+VALUE: 1, weight 6
+VALUE: 2, weight 8
+VALUE: 29, weight 8
+VALUE: 30, weight 5
+VALUE: 30, weight 5
 Node 32
   Distance
-    0 : 8
+    0 : 0
     1 : 6
-    2 : 5
+    2 : 8
     3 : 0
     4 : 0
     5 : 0
@@ -2286,29 +2598,28 @@ Node 32
     11 : 0
     12 : 0
     13 : 0
-    14 : 8
-    15 : 8
+    14 : 0
+    15 : 0
     16 : 0
     17 : 0
-    18 : 6
+    18 : 0
     19 : 0
-    20 : 1
+    20 : 0
     21 : 0
-    22 : 3
-    23 : 3
-    24 : 16
-    25 : 11
-    26 : 15
+    22 : 0
+    23 : 0
+    24 : 0
+    25 : 0
+    26 : 0
     27 : 0
-    28 : 7
+    28 : 0
     29 : 8
     30 : 5
-    31 : 6
+    31 : 0
     32 : X
-    33 : 0
   Preds
-    0 : [2]->NULL
-    1 : [30]->NULL
+    0 : NULL
+    1 : [32]->NULL
     2 : [32]->NULL
     3 : NULL
     4 : NULL
@@ -2321,94 +2632,22 @@ Node 32
     11 : NULL
     12 : NULL
     13 : NULL
-    14 : [32]->NULL
-    15 : [32]->NULL
+    14 : NULL
+    15 : NULL
     16 : NULL
     17 : NULL
-    18 : [32]->NULL
+    18 : NULL
     19 : NULL
-    20 : [32]->NULL
+    20 : NULL
     21 : NULL
-    22 : [32]->NULL
-    23 : [32]->NULL
-    24 : [31]->NULL
-    25 : [31]->NULL
-    26 : [29]->NULL
+    22 : NULL
+    23 : NULL
+    24 : NULL
+    25 : NULL
+    26 : NULL
     27 : NULL
-    28 : [31]->NULL
+    28 : NULL
     29 : [32]->NULL
     30 : [32]->NULL
-    31 : [32]->NULL
+    31 : NULL
     32 : NULL
-    33 : NULL
-Node 33
-  Distance
-    0 : 4
-    1 : 8
-    2 : 11
-    3 : 11
-    4 : 0
-    5 : 0
-    6 : 0
-    7 : 0
-    8 : 8
-    9 : 8
-    10 : 0
-    11 : 0
-    12 : 0
-    13 : 7
-    14 : 8
-    15 : 7
-    16 : 0
-    17 : 0
-    18 : 7
-    19 : 2
-    20 : 4
-    21 : 0
-    22 : 4
-    23 : 7
-    24 : 14
-    25 : 15
-    26 : 9
-    27 : 4
-    28 : 10
-    29 : 10
-    30 : 10
-    31 : 10
-    32 : 9
-    33 : X
-  Preds
-    0 : [19]->NULL
-    1 : [19]->NULL
-    2 : [27]->[13]->NULL
-    3 : [13]->NULL
-    4 : NULL
-    5 : NULL
-    6 : NULL
-    7 : NULL
-    8 : [33]->NULL
-    9 : [33]->NULL
-    10 : NULL
-    11 : NULL
-    12 : NULL
-    13 : [33]->NULL
-    14 : [33]->NULL
-    15 : [33]->NULL
-    16 : NULL
-    17 : NULL
-    18 : [33]->NULL
-    19 : [33]->NULL
-    20 : [33]->NULL
-    21 : NULL
-    22 : [33]->NULL
-    23 : [33]->NULL
-    24 : [27]->NULL
-    25 : [31]->NULL
-    26 : [33]->NULL
-    27 : [33]->NULL
-    28 : [33]->NULL
-    29 : [33]->NULL
-    30 : [33]->NULL
-    31 : [33]->NULL
-    32 : [33]->NULL
-    33 : NULL

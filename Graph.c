@@ -25,17 +25,17 @@ Graph newGraph(int noNodes){
     return graph;
 }
 
-adjListNode* newNode(int v, int weight, adjListNode* next){
+adjListNode* newNode(int v, int weight){
     adjListNode* new = malloc(sizeof(adjListNode));
     new->w = v;
-    new->next = next;
+    new->next = NULL;
     new->weight = weight;
     return new;
 }
 
 void insertEdge(Graph g, Vertex src, Vertex dest, int weight){
     //Add edge from src to dest
-    adjListNode* new = newNode(dest,weight,NULL);
+    adjListNode* new = newNode(dest,weight);
     new->next = g->List[src];
     g->List[src] = new;
     g->noEdges++;
@@ -77,36 +77,38 @@ int  numVerticies(Graph g){
 /*
  * Returns a list of adjacent vertices
  * on outgoing edges from a given vertex.
-**/
+*
+static void printnewList(adjListNode* newlist){
+    while(newlist!=NULL){
+        printf("VALUE: %d, weight %d\n",newlist->w, newlist->weight);
+        newlist = newlist->next;
+    }
+}*/
 AdjList outIncident(Graph g, Vertex v){
     if (g->List[v] == NULL) return NULL;
-    adjListNode* curr = g->List[v];
-    adjListNode* newlist = newNode(curr->w,curr->weight,NULL); 
+    /*adjListNode* curr = g->List[v];
+    adjListNode* newlist = newNode(curr->w,curr->weight); 
     while(curr->next!= NULL){
-        adjListNode* new = newNode(curr->next->w,curr->next->weight,NULL);
+        adjListNode* new = newNode(curr->next->w,curr->next->weight);
         new -> next = newlist;
         newlist = new;
         curr = curr->next;
     }
-    return newlist;
+
+    printf("RETURNING NEWLIST FOR ITEM %d\n",v);
+    printnewList(newlist);*/
+    return g->List[v];
 }
 /*
 
  * Returns a list of adjacent vertices
  * on incoming edges from a given vertex.
 **/
+
 AdjList inIncident(Graph g, Vertex v){
-    adjListNode* newlist = newNode(-1, -1, NULL); 
-    for (int i =0; i< v; i++){
-        adjListNode* curr = g->List[i];
-        while(curr!= NULL){
-            if (curr->w == v){
-                addNode(newlist,i,curr->weight);
-            }
-            curr = curr-> next;
-        }
-    }
-    for(int i = v+1; i<g->noNodes; i++){
+    adjListNode* newlist = newNode(-1, -1); 
+    for (int i =0; i< g->noNodes; i++){
+        if (i == v) continue;
         adjListNode* curr = g->List[i];
         while(curr!= NULL){
             if (curr->w == v){
@@ -116,6 +118,7 @@ AdjList inIncident(Graph g, Vertex v){
         }
     }
     if (newlist->w == -1) return NULL;
+
     return newlist;
 }
 
@@ -125,7 +128,7 @@ void addNode (AdjList list, int i, int weight){
         list -> weight = weight;
         return;
     } 
-    adjListNode* new = newNode(i,weight, NULL);
+    adjListNode* new = newNode(i,weight);
     adjListNode* next = list-> next;
     new -> next = next;
     list -> next = new;

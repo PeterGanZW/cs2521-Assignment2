@@ -56,7 +56,6 @@ Graph readGraph(char* file) {
 		i++;
 	}
 	fclose(f);
-
 	Graph g = newGraph(maxVert+1);
 	i = 0;
 	while(i < lines) {
