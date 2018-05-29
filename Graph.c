@@ -4,9 +4,9 @@
 #include <assert.h>
 #include "Graph.h"
 
-struct GraphRep{
-    int noNodes;
-    int noEdges;
+struct GraphRep{                 // struct of GraphRep involves:
+    int noNodes;                 // number of nodes
+    int noEdges;                 // number of edges
     struct _adjListNode** List;
 };
 
