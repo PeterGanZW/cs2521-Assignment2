@@ -163,6 +163,7 @@ void showShortestPaths(ShortestPaths paths) {
 }
 
 void freeShortestPaths(ShortestPaths paths) {
+  if (paths.pred[0] == NULL) return;
   for (int i=0; i< paths.noNodes; i++){
     PredNode* prev = paths.pred[i];
     PredNode* curr = paths.pred[i];
