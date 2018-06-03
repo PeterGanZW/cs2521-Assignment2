@@ -1,8 +1,8 @@
 // LanceWilliamsHAC ADT interface for Ass2 (COMP2521)
 #include <stdbool.h>
 #ifndef GRAPH
-    #define GRAPH
-    #include "Graph.h"
+	#define GRAPH
+	#include "Graph.h"
 #endif
 
 typedef struct DNode *Dendrogram;
@@ -28,4 +28,5 @@ Dendrogram LanceWilliamsHAC(Graph g, int method);
 
 void freeDendrogram(Dendrogram d);
 
-double** calculateDistance(Graph g);
+
+
