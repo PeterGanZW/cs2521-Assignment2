@@ -89,6 +89,7 @@ NodeValues closenessCentrality(Graph g){
 	}
 	return throwAway;
 }
+
 typedef struct Node{
 	PredNode* pred;
 	struct Node* next;
@@ -142,57 +143,7 @@ static int isInQueue(Queue q, PredNode* pred){
 		tmp = tmp->next;
 	}
 	return 0;
-}/*
-static void showQueue(Queue q){
-	if (q->Head == NULL) return;
-	PredNode* tmp = q->Head;
-	while (tmp!=NULL){
-		printf("Queue Element = %d\n",tmp->v);
-		tmp = tmp->next;
-	}
 }
-static int queueSize(Queue q){
-	if (q->Head == NULL) return 0;
-	int count = 0;
-	PredNode* tmp = q->Head;
-	while (tmp!=NULL){
-		tmp = tmp->next;
-		count++;
-	}
-	return count;
-}
-
-static int BFS(ShortestPaths sp, PredNode* n, int vertex){
-	Queue q = malloc(sizeof(struct Queue));
-	q->Head = NULL;
-	int visited[sp.noNodes];
-	int isInQueue[sp.noNodes];
-	for(int i =0; i<sp.noNodes; i++){
-		visited[i] = 0;
-		isInQueue[i] = 0;
-	}
-	enqueue(q,n);
-	if(n != NULL){
-		isInQueue[n->v] = 1;
-	}
-	while(!emptyQ(q)){
-		PredNode* curr = dequeue(q);
-		isInQueue[curr->v] = 0;
-		visited[curr->v] = 1;
-		while(curr!=NULL){
-			if (curr->v == vertex) return 1;
-			if (sp.pred[curr->v] != NULL){
-				if (visited[sp.pred[curr->v]->v] == 0 && isInQueue[sp.pred[curr->v]->v]!= 1){
-					enqueue(q,sp.pred[curr->v]);
-					isInQueue[sp.pred[curr->v]->v] = 1;
-				}
-			}
-			curr = curr->next;
-		}
-	}
-	return 0;
-}
-*/
 static double countAppearances(ShortestPaths sp, int vertex){
 	double sum = 0;
 	for (int index = 0; index< sp.noNodes; index++){
@@ -282,13 +233,11 @@ NodeValues betweennessCentralityNormalised(Graph g){
 	}
 	return throwAway;
 }
-
 void showNodeValues(NodeValues values){
 	for (int i =0; i<values.noNodes; i++){
 		printf("%d: %f\n", i, values.values[i]);
 	}
 }
-
 void freeNodeValues(NodeValues values){
 	free(values.values);
 }
