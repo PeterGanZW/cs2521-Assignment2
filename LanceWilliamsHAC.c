@@ -56,7 +56,8 @@ Coord newCoord(int x, int y){
 
 DentRep newDentRep(int V){
     Dendrogram* dent = (Dendrogram*)malloc(V*sizeof(Dendrogram));
-    for(int i=0; i<V;i++){
+    int i;
+    for(i=0; i<V;i++){
         dent[i] = (Dendrogram)malloc(sizeof(DNode));
         dent[i]->vertex = i;
         dent[i]->left = dent[i]->right = NULL;
@@ -71,8 +72,10 @@ Coord static shortestDist(double** dist, int V){
     double shortest = DBL_MAX;
     int x = -1;
     int y = -1;
-    for(int i = 0; i<V; i++){
-        for (int j=0; j<i; j++){
+    int i;
+    for(i = 0; i<V; i++){
+        int j;
+        for (j=0; j<i; j++){
             if (dist[i][j] == -1) continue;
             if (dist[i][j]<shortest){
                 shortest = dist[i][j];
@@ -80,7 +83,7 @@ Coord static shortestDist(double** dist, int V){
                 y = j;
             }
         }
-        for (int j =i+1; j<V;j++){
+        for (j =i+1; j<V;j++){
             if (dist[i][j] == -1) continue;
             if (dist[i][j]<shortest){
                 shortest = dist[i][j];
@@ -117,7 +120,8 @@ static void updateDent(Coord coord, Dendrogram* dent){
 static void Single(double** dist, Coord coord, int V){
     int x = coord->x;
     int y = coord->y;
-    for (int i =0; i<V; i++){
+    int i;
+    for (i =0; i<V; i++){
         if (dist[x][i]>dist[y][i]){
             dist[x][i] = dist[y][i];
         } else {
@@ -131,12 +135,12 @@ static void Single(double** dist, Coord coord, int V){
         }
     }
     if (x<y){
-        for (int i =0; i<V; i++){
+        for (i =0; i<V; i++){
             dist[y][i] = -1;
             dist[i][y] = -1;
         }
     } else {
-        for (int i =0; i<V; i++){
+        for (i =0; i<V; i++){
             dist[x][i] = -1;
             dist[i][x] = -1;
         }
@@ -147,7 +151,8 @@ static void Complete(double** dist, Coord coord, int V){
     int x = coord->x;
     int y = coord->y;
     double inf = strtod("Inf", NULL);
-    for (int i =0; i<V; i++){
+    int i;
+    for (i =0; i<V; i++){
         if (dist[x][i] == inf){
             dist[x][i] = dist[y][i];
         } else if (dist[y][i] == inf){
@@ -168,34 +173,18 @@ static void Complete(double** dist, Coord coord, int V){
         }
     }
     if (x<y){
-        for (int i =0; i<V; i++){
+        for (i =0; i<V; i++){
             dist[y][i] = -1;
             dist[i][y] = -1;
         }
     } else {
-        for (int i =0; i<V; i++){
+        for (i =0; i<V; i++){
             dist[x][i] = -1;
             dist[i][x] = -1;
         }
     }
 }
 
-Dendrogram LanceWilliamsHAC(Graph g, int method){
-    int V = numVerticies(g);
-    DentRep dent = newDentRep(V);
-    double** dist = calculateDistance(g);
-    for (int i=0; i<V; i++){
-        Coord c = shortestDist(dist,V);
-        if (c->x == -1) break;
-        updateDent(c, dent->dent);
-        if (method == 0){
-            Complete(dist,c,V);
-        } else {
-            Single(dist,c,V);
-        }
-    }
-    return dent->dent[0];
-}
 
 
 //return the max weight in double between two nodes from a graph, if the edge does not exist, return DBL_MAX
@@ -223,10 +212,11 @@ static double returnWeight(Graph g, int src, int dest){
 static double** calculateDistance(Graph g){
     int nV = g->noNodes;
     double** dist = (double**)malloc(nV*sizeof(double*));
-    for (int i = 0; i<nV; i++)
+    int i,j;
+    for (i = 0; i<nV; i++)
         dist[i] = (double*) malloc(nV*sizeof(double));
-    for (int i=0; i<nV;i++){
-        for (int j=0; j<nV; j++){
+    for (i=0; i<nV;i++){
+        for (j=0; j<nV; j++){
             dist[i][j] = 1/returnWeight(g, i, j);
         }
     }
@@ -234,6 +224,23 @@ static double** calculateDistance(Graph g){
 }
 
 
+Dendrogram LanceWilliamsHAC(Graph g, int method){
+    int V = numVerticies(g);
+    DentRep dent = newDentRep(V);
+    double** dist = calculateDistance(g);
+    int i;
+    for (i=0; i<V; i++){
+        Coord c = shortestDist(dist,V);
+        if (c->x == -1) break;
+        updateDent(c, dent->dent);
+        if (method == 0){
+            Complete(dist,c,V);
+        } else {
+            Single(dist,c,V);
+        }
+    }
+    return dent->dent[0];
+}
 
 void freeDendrogram(Dendrogram d){
     free(d);

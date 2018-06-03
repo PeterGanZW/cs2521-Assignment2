@@ -18,8 +18,8 @@ Graph newGraph(int noNodes){
     graph -> noNodes = noNodes;
     graph -> noEdges = 0;
     graph -> List = malloc((noNodes)*sizeof(adjListNode*));
-
-    for(int i =0; i<noNodes; i++){
+    int i;
+    for(i =0; i<noNodes; i++){
         graph->List[i] = NULL;
     }
     return graph;
@@ -107,7 +107,8 @@ AdjList outIncident(Graph g, Vertex v){
 
 AdjList inIncident(Graph g, Vertex v){
     adjListNode* newlist = newNode(-1, -1); 
-    for (int i =0; i< g->noNodes; i++){
+    int i;
+    for (i =0; i< g->noNodes; i++){
         if (i == v) continue;
         adjListNode* curr = g->List[i];
         while(curr!= NULL){
@@ -137,7 +138,8 @@ void addNode (AdjList list, int i, int weight){
 void  showGraph(Graph g){
     assert(g!= NULL);
     printf("#vertices=%d, #edges=%d\n\n",numVerticies(g),g->noEdges);
-    for(int i =0; i<g->noNodes; i++){
+    int i;
+    for(i =0; i<g->noNodes; i++){
         adjListNode* curr = g->List[i];
         printf("%d ----->", i);
         while (curr != NULL){
@@ -149,7 +151,8 @@ void  showGraph(Graph g){
     }
 }
 void  freeGraph(Graph g){
-    for(int i=0; i<g->noNodes;i++){
+    int i;
+    for(i=0; i<g->noNodes;i++){
         adjListNode* curr = g->List[i];
         while (curr!= NULL){
             adjListNode* prev = curr;
